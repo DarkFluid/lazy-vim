@@ -31,6 +31,7 @@ return {
 
 			local cwd = vim.uv.cwd()
 			local basename = vim.fs.basename(cwd)
+			local tmp_dir = vim.fs.joinpath(cwd, "tmp")
 
 			_99.setup({
 				-- Default provider is OpenCodeProvider (uses the `opencode` CLI).
@@ -39,7 +40,7 @@ return {
 					path = "/tmp/" .. basename .. ".99.debug",
 					print_on_error = true,
 				},
-				tmp_dir = "./tmp",
+				tmp_dir = tmp_dir,
 				md_files = {
 					"AGENT.md",
 					"AGENTS.md",

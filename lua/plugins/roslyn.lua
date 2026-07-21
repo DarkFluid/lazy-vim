@@ -86,6 +86,14 @@ return {
   {
     "stevearc/conform.nvim",
     optional = true,
+    init = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "cshtml", "razor" },
+        callback = function(args)
+          vim.b[args.buf].autoformat = false
+        end,
+      })
+    end,
     opts = {
       formatters_by_ft = {
         cs = { "lsp" },
